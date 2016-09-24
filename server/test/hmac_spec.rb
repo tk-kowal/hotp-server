@@ -1,4 +1,5 @@
 require 'rspec'
+require 'base64'
 require_relative '../src/hmac.rb'
 
 describe HMAC do
@@ -18,7 +19,7 @@ describe HMAC do
       "1637409809a679dc698207310c8c7fc07290d9e5"
     ].each_with_index do |expected,index|
       it "hmac(secret, #{index}) -> #{expected}" do
-        expect(HMAC.digest(secret, [index].pack('Q>'))).to eq(expected)
+        expect(HMAC.digest(secret, [index].pack('Q>'))).to eq([expected].pack("H*"))
       end
     end
   end
