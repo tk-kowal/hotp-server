@@ -3,6 +3,6 @@ require 'openssl'
 
 class HMAC
   def self.digest(key, message)
-    OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('MD5'), key, message)
+    OpenSSL::HMAC.new(key, OpenSSL::Digest.new('sha1')).update(message).hexdigest
   end
 end

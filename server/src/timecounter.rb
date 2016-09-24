@@ -5,6 +5,6 @@ class TimeBasedCounter
   end
 
   def get
-    ((@clock.now - @clock.at(0)).to_i / @interval).to_s
+    ((@clock.now - @clock.at(0)).to_i / @interval)
   end
 end

@@ -23,7 +23,7 @@ describe TimeBasedCounter do
     it 'reports 0 intervals since the beginning of time' do
       clock = MockClock.new(horizon, now)
       subject = TimeBasedCounter.new(interval, clock)
-      expect(subject.get).to eq "0"
+      expect(subject.get).to eq 0
     end
   end
 
@@ -32,7 +32,7 @@ describe TimeBasedCounter do
     it 'reports 0 intervals since the beginning of time' do
       clock = MockClock.new(horizon, now)
       subject = TimeBasedCounter.new(interval, clock)
-      expect(subject.get).to eq "0"
+      expect(subject.get).to eq 0
     end
   end
 
@@ -41,7 +41,7 @@ describe TimeBasedCounter do
     it 'reports 0 intervals since the beginning of time' do
       clock = MockClock.new(horizon, now)
       subject = TimeBasedCounter.new(interval, clock)
-      expect(subject.get).to eq "1"
+      expect(subject.get).to eq 1
     end
   end
 end
