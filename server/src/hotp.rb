@@ -11,7 +11,6 @@ class HOTP
 
   def get
     hmac = HMAC.digest(@key, to_eight_byte_str(@counter.get))
-    binding.pry
     otp(hmac)
   end
 
@@ -24,7 +23,6 @@ class HOTP
   def truncated(hmac)
     offset = calculate_dynamic_offset(hmac)
     truncated_digest = four_bytes_from(offset, hmac)
-    binding.pry
     untrimmed_otp = human_readable(truncated_digest)
     trim(untrimmed_otp)
   end
