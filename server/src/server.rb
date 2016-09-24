@@ -13,7 +13,7 @@ get '/key' do
 end
 
 get '/otp' do
-  GENERATOR.get
+  GENERATOR.get + "\n"
 end
 
 post '/auth' do

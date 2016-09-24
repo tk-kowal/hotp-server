@@ -28,11 +28,11 @@ class HOTP
   end
 
   def trim(otp)
-    "%06d" % (otp % 10**6)
+    "%06d" % limit_to_six_digits(otp)
   end
 
   def human_readable(digest)
-    digest.map { |byte| "%08b" % byte }.join.split("").last(31).join.to_i(2)
+    digest.pack('C*').unpack('I>').first & 0x7F_FF_FF_FF
   end
 
   def four_bytes_from(offset, hmac)
@@ -45,5 +45,9 @@ class HOTP
 
   def to_eight_byte_str(count)
     [count].pack('Q>')
+  end
+
+  def limit_to_six_digits(otp)
+    otp % 10**6
   end
 end
