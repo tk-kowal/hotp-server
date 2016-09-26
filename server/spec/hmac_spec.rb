@@ -3,7 +3,7 @@ require 'base64'
 require_relative '../src/hmac.rb'
 
 describe HMAC do
-  let(:secret) { "12345678901234567890".encode!("ASCII-8BIT") }
+  let(:secret) { "12345678901234567890" }
 
   describe "hmac" do
     [
