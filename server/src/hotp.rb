@@ -32,11 +32,11 @@ class HOTP
   end
 
   def human_readable(digest)
-    digest.pack('C*').unpack('I>').first & 0x7F_FF_FF_FF
+    digest.unpack('I>').first & 0x7F_FF_FF_FF
   end
 
   def four_bytes_from(offset, hmac)
-    hmac.bytes[offset..offset+3]
+    hmac.byteslice(offset, 4)
   end
 
   def calculate_dynamic_offset(hmac)
